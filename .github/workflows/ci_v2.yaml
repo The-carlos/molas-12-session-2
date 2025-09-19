@@ -23,7 +23,14 @@ jobs:
         source venv/bin/activate
         pip install -r requirements.txt
     
-    - name: Run tests
+    - name: Run flake8
       run: |
-        python -m unittest discover -s test -p "test_*.py"
+        source venv/bin/activate
+        flake8 my_app main_v1.py
+    
+    - name: Run mypy
+      run: |
+        source venv/bin/activate
+        mypy my_app --config-file mypy.ini
+        
       
